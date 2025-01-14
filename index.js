@@ -17,11 +17,25 @@ const userSchema = mongoose.Schema({
 
 const User = mongoose.model('User',userSchema)
 
-const user2 = User({
-    name : "Eve",
-    email: "adam123@gmail.com",
-    age : 25,
-})
-user2.save().then((res)=>
-    console.log(res)
-).catch((err)=>console.log(err))
+// User.find({age:{$eq:18}},{name:1}).then((res)=>console.log(res))
+
+// User.updateOne({name:"Lilli"},{$set:{age:20}})
+// .then((res)=>console.log(res))
+// .catch((err)=>console.log(err))
+
+// User.updateMany({name:"Lilli"},{$set:{age:5}})
+// .then((res)=>console.log(res))
+// .catch((err)=>console.log(err))
+
+User.deleteOne({$or:[{name:"Lilli"},{age:20}]})
+.then((res)=>console.log(res))
+.catch((err)=>console.log(err))
+
+// const user2 = User({
+//     name : "Eve",
+//     email: "adam123@gmail.com",
+//     age : 25,
+// })
+// user2.save().then((res)=>
+//     console.log(res)
+// ).catch((err)=>console.log(err))
